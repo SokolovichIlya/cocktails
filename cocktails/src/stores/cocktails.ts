@@ -4,36 +4,36 @@ import type { TypeCocktailsStoreState } from './types/cocktails'
 import { getCocktails } from '@/api/requests/cocktails'
 
 export const useCocktailsStore = defineStore('cocktails', {
-	state: () => ({
-		isLoadingCocktail: false,
-		cocktailsList: {},
-	}) as TypeCocktailsStoreState,
+    state: () => ({
+        isLoadingCocktail: false,
+        cocktailsList: {},
+    }) as TypeCocktailsStoreState,
 
-	getters: {
+    getters: {
         hasCocktail: ({ cocktailsList }) => {
-			return (code: string) => !!cocktailsList[code]
-		},
+            return (code: string) => !!cocktailsList[code]
+        },
 
-		getCocktail: ({ cocktailsList }) => {
-			return (code: string) => cocktailsList[code]
-		},
+        getCocktail: ({ cocktailsList }) => {
+            return (code: string) => cocktailsList[code]
+        },
     },
 
-	actions: {
-		async fetchCocktails(code: string) : Promise<void> {
-			try {
-				this.isLoadingCocktail = true
+    actions: {
+        async fetchCocktails(code: string) : Promise<void> {
+            try {
+                this.isLoadingCocktail = true
 
-				if (!this.cocktailsList[code]) {
-					const cocktails = await getCocktails({ s: code })
-					
-					this.cocktailsList[code] = cocktails.data
-				}
-			} catch (error) {
-				console.error(error)	
-			} finally {
-				this.isLoadingCocktail = false
-			}
+                if (!this.cocktailsList[code]) {
+                    const cocktails = await getCocktails({ s: code })
+                    
+                    this.cocktailsList[code] = cocktails.data
+                }
+            } catch (error) {
+                console.error(error)	
+            } finally {
+                this.isLoadingCocktail = false
+            }
         },
-	}
+    }
 })

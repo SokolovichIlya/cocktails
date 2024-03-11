@@ -1,13 +1,13 @@
 <template>
-	<main v-if="!isLoadingCocktail && hasCocktail(cocktailCode)">
-		<div class="cocktails">
-			<CocktailCardComponent 
-				v-for="(cocktailItem, index) in currentCocktail.drinks" 
-				:key="`${cocktailCode}-cocktail-item-${index}`"
-				:cocktail-item="cocktailItem" 
-			/>
-		</div>
-	</main>
+    <main v-if="!isLoadingCocktail && hasCocktail(cocktailCode)">
+        <div class="cocktails">
+            <CocktailCardComponent 
+                v-for="(cocktailItem, index) in currentCocktail.drinks" 
+                :key="`${cocktailCode}-cocktail-item-${index}`"
+                :cocktail-item="cocktailItem" 
+            />
+        </div>
+    </main>
 </template>
 
 <script setup lang="ts">
@@ -18,9 +18,9 @@ import { useRoute } from 'vue-router'
 import CocktailCardComponent from '@/components/cocktails/CocktailCardComponent.vue'
 
 const { 
-	isLoadingCocktail, 
-	hasCocktail,
-	getCocktail,
+    isLoadingCocktail, 
+    hasCocktail,
+    getCocktail,
 } = storeToRefs(useCocktailsStore())
 
 const { fetchCocktails } = useCocktailsStore()
@@ -33,6 +33,6 @@ fetchCocktails(cocktailCode.value)
 const currentCocktail = computed(() => getCocktail.value(cocktailCode.value))
 
 watch(() => cocktailCode.value, (newCode: string) => {
-	fetchCocktails(newCode)
+    fetchCocktails(newCode)
 })
 </script>
