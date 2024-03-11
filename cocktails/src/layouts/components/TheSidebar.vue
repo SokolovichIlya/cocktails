@@ -2,29 +2,26 @@
     <aside :class="{'open': isOpenSidebar}" class="sidebar">
         <nav class="sidebar__nav">
             <ul class="sidebar__links">
-                <li 
+                <router-link 
+                    v-for="cocktail in cocktailConfig" 
+                    v-slot="{ href, navigate, isActive }"
+                    :key="`cocktail-${cocktail.code}`"
+                    :to="{
+                        name: 'cocktail.item', 
+                        params: { cocktailCode: cocktail.code },
+                    }" 
+                    custom
                 >
-                    <router-link 
-                        v-slot="{ href, navigate, isActive }"
-                        v-for="cocktail in cocktailConfig" 
-                        :key="`cocktail-${cocktail.code}`"
-                        :to="{
-                            name: 'cocktail.item', 
-                            params: { cocktailCode: cocktail.code },
-                        }" 
-                        custom
+                    <li 
+                        @click="navigate" 
+                        :active="isActive" 
+                        :href="href"
+                        :class="{'active': isActive}"
+                        class="sidebar__links-item"
                     >
-                        <li 
-                            @click="navigate" 
-                            :active="isActive" 
-                            :href="href"
-                            :class="{'active': isActive}"
-                            class="sidebar__links-item"
-                        >
-                            {{ cocktail.code }}
-                        </li>
-                    </router-link>
-                </li>
+                        {{ cocktail.code }}
+                    </li>
+                </router-link>
             </ul>
         </nav>
     </aside>

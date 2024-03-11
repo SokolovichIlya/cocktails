@@ -35,5 +35,5 @@ export const useCocktailsStore = defineStore('cocktails', {
                 this.isLoadingCocktail = false
             }
         },
-    }
+    },
 })

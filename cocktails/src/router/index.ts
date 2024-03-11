@@ -25,7 +25,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     if (to.name === 'cocktail.item') {
         const hasCocktail = cocktailConfig.findIndex(cocktail => 
-            cocktail.code === to.params.cocktailCode
+            cocktail.code === to.params.cocktailCode,
         ) 
 
         if (hasCocktail >= 0) {

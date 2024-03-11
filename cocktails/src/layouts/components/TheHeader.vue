@@ -21,4 +21,6 @@ defineProps({
         default: false,
     },
 })
+
+defineEmits(['change'])
 </script>

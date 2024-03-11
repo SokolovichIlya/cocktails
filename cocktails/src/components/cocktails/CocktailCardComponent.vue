@@ -20,14 +20,14 @@
                     v-for="item in 15" 
                     :key="`card-ingredient-${item}`"
                 >
-                <div
-                    v-if="cocktailItem[`strMeasure${item}`] || cocktailItem[`strIngredient${item}`]"
-                    class="cocktail-card__ingredient"
-                >
-                    <span class="cocktail-card__text">
-                        {{ cocktailItem[`strMeasure${item}`] }} {{ cocktailItem[`strIngredient${item}`] }}
-                    </span>
-                </div>
+                    <div
+                        v-if="cocktailItem[`strMeasure${item}`] || cocktailItem[`strIngredient${item}`]"
+                        class="cocktail-card__ingredient"
+                    >
+                        <span class="cocktail-card__text">
+                            {{ cocktailItem[`strMeasure${item}`] }} {{ cocktailItem[`strIngredient${item}`] }}
+                        </span>
+                    </div>
                 </template>
             </div> 
         </div>
@@ -42,12 +42,12 @@
 
 <script setup lang="ts">
 import { defineProps, type PropType } from 'vue'
-import { ICocktailItem} from '@/api/interfaces/cocktails'
+import type { ICocktailItem } from '@/api/interfaces/cocktails'
 
 defineProps({
     cocktailItem: {
         type: Object as PropType<ICocktailItem>,
         required: true,
-    }
+    },
 })
 </script>

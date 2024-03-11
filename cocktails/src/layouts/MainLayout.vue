@@ -1,8 +1,8 @@
 <template>
     <div class="wrapper">
-        <TheHeader @change="onChangeIsOpenSidebar" :isOpenSidebar="isOpenSidebar" />
+        <TheHeader @change="onChangeIsOpenSidebar" :is-open-sidebar="isOpenSidebar" />
         <div class="wrapper-content">
-            <TheSidebar :isOpenSidebar="isOpenSidebar" />
+            <TheSidebar :is-open-sidebar="isOpenSidebar" />
             <div class="content">
                 <RouterView />
             </div>
