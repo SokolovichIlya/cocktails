@@ -1,0 +1,71 @@
+.cocktails {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.cocktail-card {
+    display: flex;
+    column-gap: 5%;
+
+    @include mMedia(onlyMobile) {
+        flex-direction: column-reverse;
+    }
+
+    &__data {
+        display: flex;
+        flex-direction: column;
+
+        @include mMedia(notMobile) {
+            width: 70%;
+        }
+
+        @include mMedia(onlyMobile) {
+            width: 100%;
+        }
+    }
+
+    &__image {
+        @include mMedia(notMobile) {
+            width: 30%;
+        }
+
+        @include mMedia(onlyMobile) {
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__title {
+        font-family: 'RobotoMedium';
+        font-size: 24px;
+        font-weight: 500;
+        color: var(--color-text);
+        margin-bottom: 10px;
+    }
+
+    &__group {
+        margin: 10px 0;
+    }
+
+    &__subtitle {
+        font-family: 'RobotoMedium';
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--color-text-second);
+        margin-bottom: 6px;
+    }
+
+    &__text {
+        font-family: 'Roboto';
+        font-size: 16px;
+        color: var(--color-text-main);
+        line-height: 1.4;
+        text-align: justify;
+    }
+}

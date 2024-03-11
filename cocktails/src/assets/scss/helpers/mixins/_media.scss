@@ -1,0 +1,11 @@
+@mixin mMedia($breakpoint) {
+    $size: map-get($breakpoints, $breakpoint);
+
+    @if ($size == 0) {
+        @content;
+    } @else {
+        @media screen and #{$size} {
+            @content;
+        }
+    }
+}
